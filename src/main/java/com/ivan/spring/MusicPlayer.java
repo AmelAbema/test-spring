@@ -21,7 +21,7 @@ public class MusicPlayer {
             Thread.sleep(1000);
             for (Music music : musicList) {
                 System.out.println("Playing: " + music.getSong());
-                Thread.sleep(3000);
+                Thread.sleep(4000);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
