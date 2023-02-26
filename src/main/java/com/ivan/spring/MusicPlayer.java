@@ -1,30 +1,22 @@
 package com.ivan.spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
-    public MusicPlayer(){}
-    public void setMusicList(List<Music> myList){
-        this.musicList = myList;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic){
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
-    public void setVolume(int volume){this.volume = volume;}
-    public void setName(String name){this.name = name;}
-    public void playMusic() {
-        try{
-            System.out.println("This is " + name + "'s player.");
-            Thread.sleep(1000);
-            System.out.println("The volume is: " + volume + ".");
-            Thread.sleep(1000);
-            for (Music music : musicList) {
-                System.out.println("Playing: " + music.getSong());
-                Thread.sleep(4000);
-            }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
+    public String playMusic() {
+        return "Playing: " + classicalMusic.getSong();
+
     }
 }
